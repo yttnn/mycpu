@@ -1,4 +1,4 @@
-package decode
+package lw
 
 import  chisel3._
 

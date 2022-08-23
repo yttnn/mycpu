@@ -2,6 +2,7 @@ package lw
 
 import chisel3._
 import common.Consts._
+import common.Instructions._
 
 class Core extends Module {
   val io = IO(new Bundle {
