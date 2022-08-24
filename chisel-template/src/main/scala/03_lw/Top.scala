@@ -12,6 +12,7 @@ class Top extends Module {
   val memory = Module(new Memory())
 
   core.io.imem <> memory.io.imem
+  core.io.dmem <> memory.io.dmem // add
 
   io.exit := core.io.exit
 }
