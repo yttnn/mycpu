@@ -1,14 +1,14 @@
-package sw
+package addsub
 
 import chisel3._
 import chisel3.util._
 import common.Consts._
-import common.Instructions._ //add
+import common.Instructions._
 
 class Core extends Module {
   val io = IO(new Bundle {
     val imem = Flipped(new ImemPortIo())
-    val dmem = Flipped(new DmemPortIo()) //add
+    val dmem = Flipped(new DmemPortIo()) 
     val exit = Output(Bool())
   })
 
