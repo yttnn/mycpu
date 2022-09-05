@@ -113,7 +113,7 @@ class Core extends Module {
 
   //***************************
   // Execute Stage
-  alu_out = MuxCase(0.U(WORD_LEN.W), Seq(
+  alu_out := MuxCase(0.U(WORD_LEN.W), Seq(
     (exe_fun === ALU_ADD) -> (op1_data + op2_data),
     (exe_fun === ALU_SUB) -> (op1_data - op2_data),
     (exe_fun === ALU_AND) -> (op1_data & op2_data),
