@@ -5,7 +5,7 @@ MI_INSTS=(csr scall)
 
 WORK_DIR=/src/chisel-template
 RESULT_DIR=$WORK_DIR/results
-makedir -p $RESULT_DIR
+mkdir -p $RESULT_DIR
 cd $WORK_DIR
 
 function loop_test() {
