@@ -1,4 +1,4 @@
-package riscv-tests
+package riscvtests
 
 import chisel3._
 import org.scalatest._

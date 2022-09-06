@@ -28,4 +28,5 @@ function loop_test() {
 PACKAGE_NAME=$1
 DIRECTORY_NAME=$2
 loop_test UI_INSTS[@] $PACKAGE_NAME "ui" $DIRECTORY_NAME
-loop_test UI_INSTS[@] $PACKAGE_NAME "mi" $DIRECTORY_NAME
+# rv32mi is not exist
+# loop_test UI_INSTS[@] $PACKAGE_NAME "mi" $DIRECTORY_NAME
