@@ -34,7 +34,7 @@ class Memory extends Module {
   val mem = Mem(16384, UInt(8.W))
 
   // load memory data from .hex
-  loadMemoryFromFile(mem, "src/riscv/rv32ui-p-sw.hex")
+  loadMemoryFromFile(mem, "src/riscv/rv32ui-p-add.hex")
 
   // write data in Memory
   // "Cat" in p56
