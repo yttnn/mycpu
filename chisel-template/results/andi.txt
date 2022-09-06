@@ -1,0 +1,15 @@
+[info] welcome to sbt 1.4.9 (Ubuntu Java 11.0.16)
+[info] loading settings for project chisel-template-build from plugins.sbt ...
+[info] loading project definition from /src/chisel-template/project
+[info] loading settings for project root from build.sbt ...
+[info] set current project to %NAME% (in build file:/src/chisel-template/)
+[info] compiling 3 Scala sources to /src/chisel-template/target/scala-2.13/classes ...
+[error] /src/chisel-template/src/main/scala/05_riscvtests/Memory.scala:1:14: '{' expected but identifier found.
+[error] package riscv-tests
+[error]              ^
+[error] /src/chisel-template/src/main/scala/05_riscvtests/Memory.scala:61:2: '}' expected but eof found.
+[error] }
+[error]  ^
+[error] two errors found
+[error] (Compile / compileIncremental) Compilation failed
+[error] Total time: 2 s, completed Sep 6, 2022, 7:46:34 AM
