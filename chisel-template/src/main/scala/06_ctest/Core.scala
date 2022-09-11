@@ -10,7 +10,7 @@ class Core extends Module {
     val imem = Flipped(new ImemPortIo())
     val dmem = Flipped(new DmemPortIo())
     val exit = Output(Bool())
-    val gp = Output(UInt(WORD_LEN.W))
+    //val gp = Output(UInt(WORD_LEN.W))
   })
 
   // generate 32bit x 32 register
@@ -196,9 +196,10 @@ class Core extends Module {
 
   // for debug
   //io.exit := (inst === 0x34333231.U(WORD_LEN.W))
+  io.exit := (inst === UNIMP)
   printf(p"io.pc      : 0x${Hexadecimal(pc_reg)}\n")
+  printf(p"pc_next    : 0x${Hexadecimal(pc_next)}\n")
   printf(p"inst       : 0x${Hexadecimal(inst)}\n")
-  printf(p"gp         : ${regfile(3)}\n")
   printf(p"rs1_addr   : $rs1_addr\n")
   printf(p"rs2_addr   : $rs2_addr\n")
   printf(p"wb_addr    : $wb_addr\n")
@@ -207,7 +208,5 @@ class Core extends Module {
   printf(p"wb_data    : 0x${Hexadecimal(wb_data)}\n")
   printf(p"dmem.addr  : ${io.dmem.addr}\n")
   printf(p"dmem.rdata : ${io.dmem.rdata}\n")
-  printf("-----------\n")
-  io.gp := regfile(3)
-  io.exit := (inst === UNIMP)
+  printf("---------\n")
 }
