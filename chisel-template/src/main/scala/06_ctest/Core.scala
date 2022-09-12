@@ -162,7 +162,8 @@ class Core extends Module {
   //****************************
   // Memory Access Stage
   io.dmem.addr := alu_out
-  io.dmem.wen := Mux(mem_wen === MEN_S, 1.U(MEN_LEN.W), 0.U(MEN_LEN.W))
+  //io.dmem.wen := Mux(mem_wen === MEN_S, 1.U(MEN_LEN.W), 0.U(MEN_LEN.W))
+  io.dmem.wen := mem_wen
   io.dmem.wdata := rs2_data
 
   // for CSR execution

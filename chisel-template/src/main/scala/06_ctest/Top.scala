@@ -6,6 +6,7 @@ import common.Consts._
 class Top extends Module {
   val io = IO(new Bundle {
     val exit = Output(Bool())
+    // Unuse ?
     //val gp = Output(UInt(WORD_LEN.W))
   })
 
@@ -14,5 +15,6 @@ class Top extends Module {
   core.io.imem <> memory.io.imem
   core.io.dmem <> memory.io.dmem
   io.exit := core.io.exit
+  // Unuse ?
   //io.gp := core.io.gp
 }

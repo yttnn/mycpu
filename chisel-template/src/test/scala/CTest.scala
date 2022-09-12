@@ -11,6 +11,9 @@ class HexTest extends FlatSpec with ChiselScalatestTester {
       c => while(!c.io.exit.peek().litToBoolean){
         c.clock.step(1)
       }
+      // riscv-tests needs gp==1 to pass tests
+      // In ctest, unuse riscv-tests
+      //c.io.gp.expect(1.U)
     }
   }
 }
