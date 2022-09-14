@@ -74,13 +74,14 @@ class Core extends Module {
   // exe_br_flg, exe_br_target are set in EX Stage
   val exe_br_flg = Wire(Bool())
   val exe_br_target = Wire(UInt(WORD_LEN.W))
-  val exe_jmp_flg = (Wire(Bool())
-  val exe_jmp_target = Wire(UInt(WORD_LEN.W))
+  val exe_jmp_flg = Wire(Bool())
+  //val exe_jmp_target = Wire(UInt(WORD_LEN.W))
+  val exe_alu_out = Wire(UInt(WORD_LEN.W))
   
   val if_pc_plus4 = if_reg_pc + 4.U(WORD_LEN.W)
   val if_pc_next = MuxCase(if_pc_plus4, Seq(
     exe_br_flg -> exe_br_target,
-    exe_jmp_flg -> exe_jmp_target,
+    exe_jmp_flg -> exe_alu_out, //??
     (if_inst === ECALL) -> csr_regfile(0x305)
   ))
   if_reg_pc := if_pc_next
@@ -120,7 +121,7 @@ class Core extends Module {
   val id_imm_z_uext = Cat(Fill(27, 0.U), id_imm_z)
   // Decode stage upgrade
   //p54-55
-  val csignals = ListLookup(inst,
+  val csignals = ListLookup(id_reg_inst,
   List(ALU_X, OP1_RS1, OP2_RS2, MEN_X, REN_X, WB_X, CSR_X),
     Array(
       LW    -> List(ALU_ADD  , OP1_RS1, OP2_IMI, MEN_X, REN_S, WB_MEM, CSR_X),
@@ -169,7 +170,7 @@ class Core extends Module {
     (id_op1_sel === OP1_PC ) -> id_reg_pc,
     (id_op1_sel === OP1_IMZ) -> id_imm_z_uext
   ))
-  val op2_data = MuxCase(0.U(WORD_LEN.W), Seq(
+  val id_op2_data = MuxCase(0.U(WORD_LEN.W), Seq(
     (id_op2_sel === OP2_RS2) -> id_rs2_data,
     (id_op2_sel === OP2_IMI) -> id_imm_i_sext,
     (id_op2_sel === OP2_IMS) -> id_imm_s_sext,
@@ -178,7 +179,7 @@ class Core extends Module {
   ))
 
   // for CSR execution
-  val id_csr_addr = Mux(csr_cmd === CSR_E, 0x342.U(CSR_ADDR_LEN.W), inst(31, 20))
+  val id_csr_addr = Mux(id_csr_cmd === CSR_E, 0x342.U(CSR_ADDR_LEN.W), id_reg_inst(31, 20))
 
   //***************************
   // ID/EX Register
