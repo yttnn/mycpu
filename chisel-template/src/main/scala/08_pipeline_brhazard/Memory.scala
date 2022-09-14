@@ -34,7 +34,7 @@ class Memory extends Module {
   val mem = Mem(16384, UInt(8.W))
 
   // load memory data from .hex
-  loadMemoryFromFile(mem, "src/hex/hazard_ex.hex")
+  loadMemoryFromFile(mem, "src/hex/br_hazard.hex")
 
   // write data in Memory
   // "Cat" in p56
