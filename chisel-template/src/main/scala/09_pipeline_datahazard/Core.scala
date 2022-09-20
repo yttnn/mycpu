@@ -291,7 +291,7 @@ class Core extends Module {
     csr_regfile(mem_reg_csr_addr) := csr_wdata
   }
 
-  mem_wb_data = MuxCase(mem_reg_alu_out, Seq(
+  mem_wb_data := MuxCase(mem_reg_alu_out, Seq(
     (mem_reg_wb_sel === WB_MEM) -> io.dmem.rdata,
     (mem_reg_wb_sel === WB_PC)  -> (mem_reg_pc + 4.U(WORD_LEN.W)),
     (mem_reg_wb_sel === WB_CSR) -> csr_rdata
