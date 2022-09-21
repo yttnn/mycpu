@@ -35,7 +35,9 @@ class Memory extends Module {
 
   // load memory data from .hex
   //loadMemoryFromFile(mem, "src/hex/br_hazard.hex")
-  loadMemoryFromFile(mem, "src/hex/hazard_wb.hex")
+  //loadMemoryFromFile(mem, "src/hex/hazard_wb.hex")
+  loadMemoryFromFile(mem, "src/hex/hazard_ex.hex")
+
 
   // write data in Memory
   // "Cat" in p56
