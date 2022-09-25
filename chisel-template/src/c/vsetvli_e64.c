@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+int main(void) {
+  unsigned int size = 5;
+  unsigned int vl;
+  while(size > 0){
+    asm volatile("vsetvli %0, %1, e64, m1"
+                  : "=r"(vl)
+                  : "r"(size));
+    size -= vl;
+  }
+  asm volatile("unimp");
+  return 0;
+}
