@@ -198,7 +198,7 @@ class Core extends Module {
   ))
 
   when(csr_cmd === CSR_V){
-    csr_regfile(VL_ADDR) := vl,
+    csr_regfile(VL_ADDR) := vl
     csr_regfile(VTYPE_ADDR) := vtype
   }
 
@@ -217,7 +217,7 @@ class Core extends Module {
 
 
   // for debug
-  io.regfile(3)
+  io.gp := regfile(3)
   io.pc := pc_reg
   io.exit := (inst === UNIMP)
   printf(p"io.pc      : 0x${Hexadecimal(pc_reg)}\n")
